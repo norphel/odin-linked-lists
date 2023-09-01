@@ -44,6 +44,16 @@ class LinkedList {
     }
     return count;
   }
+  at(index) {
+    let current = this.head();
+    for (let i = 0; i < this.size(); i++) {
+      if (i === index) {
+        return current;
+      }
+      current = current.nextNode;
+    }
+    return "Out of bound";
+  }
 }
 class Node {
   constructor(value = null, newNode = null) {
@@ -53,7 +63,11 @@ class Node {
 }
 
 let list = new LinkedList();
-console.log(list.size());
-list.append(1);
+console.log(list.at(0));
 list.append("a");
-console.log(list.size());
+list.append("b");
+list.append("c");
+list.append("d");
+list.append("e");
+console.log(list.at(3));
+console.log(list.at(6));
