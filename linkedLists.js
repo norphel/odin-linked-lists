@@ -22,6 +22,13 @@ class LinkedList {
     }
     return tmp;
   }
+  append(value) {
+    if (!this.head()) {
+      this.headNode = new Node(value);
+    }
+    let tailNode = this.tail();
+    tailNode.nextNode = new Node(value);
+  }
 }
 class Node {
   constructor(value = null, newNode = null) {
@@ -31,9 +38,8 @@ class Node {
 }
 
 let list = new LinkedList();
-console.log(list.tail());
-list.prepend(4);
-list.prepend(3);
-list.prepend(2);
+console.log(list);
+list.append(2);
 list.prepend(1);
-console.log(list.tail());
+list.append(3);
+console.log(list);
