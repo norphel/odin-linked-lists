@@ -12,6 +12,16 @@ class LinkedList {
       this.headNode = newNode;
     }
   }
+  tail() {
+    let tmp = this.head();
+    if (!tmp) {
+      return null;
+    }
+    while (tmp.nextNode !== null) {
+      tmp = tmp.nextNode;
+    }
+    return tmp;
+  }
 }
 class Node {
   constructor(value = null, newNode = null) {
@@ -21,8 +31,9 @@ class Node {
 }
 
 let list = new LinkedList();
-console.log(list); //LinkedList {}
+console.log(list.tail());
+list.prepend(4);
+list.prepend(3);
 list.prepend(2);
-console.log(list); //LinkedList { headNode: Node { value: 2, nextNode: null } }
 list.prepend(1);
-console.log(list); //LinkedList { headNode: Node { value: 1, nextNode: Node { value: 2, nextNode: null } } }
+console.log(list.tail());
