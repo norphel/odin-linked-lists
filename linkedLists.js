@@ -171,10 +171,22 @@ class Node {
   }
 }
 
+//usage
 let list = new LinkedList();
-list.append(1);
+console.log(list); //LinkedList {}
 list.append(2);
-list.append(3);
-console.log(list); //LinkedList { headNode: Node { value: 1, nextNode: Node { value: 2, nextNode: Node { value: 3, nextNode: null } } }
-list.removeAt(1);
-console.log(list); //LinkedList { headNode: Node { value: 1, nextNode: Node { value: 3, nextNode: null } } }
+console.log(list); //LinkedList { headNode: Node { value: 2, nextNode: null } }
+list.prepend(0);
+console.log(list); //LinkedList { headNode: Node { value: 0, nextNode: Node { value: 2, nextNode: null } } }
+console.log(list.size()); //2
+console.log(list.head()); //Node { value: 0, nextNode: Node { value: 2, nextNode: null } }
+list.insertAt(1, 1);
+console.log(list); //LinkedList { headNode: Node { value: 0, nextNode: Node { value: 1, nextNode: { value: 2, nextNode: null } } } }
+console.log(list.at(1)); //Node { value: 1, nextNode: Node { value: 2, nextNode: null } }
+console.log(list.contains(3)); //false
+console.log(`1 found at index: ${list.find(1)}`); //1 found at index: 1
+console.log(list.toString()); //( 0 ) -> ( 1 ) -> ( 2 ) ->  null
+list.pop();
+console.log(list.tail()); //Node { value: 1, nextNode: null }
+list.removeAt(0);
+console.log(list); //LinkedList { headNode: Node { value: 1, nextNode: null } }
