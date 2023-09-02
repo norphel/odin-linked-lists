@@ -69,6 +69,24 @@ class LinkedList {
       penUltimateNode.nextNode = null;
     }
   }
+
+  contains(value) {
+    let current = this.head();
+    if (!current) {
+      return false;
+    }
+    while (current.nextNode !== null) {
+      if (current.value === value) {
+        return true;
+      }
+      current = current.nextNode;
+    }
+    if (current.value === value) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 class Node {
   constructor(value = null, newNode = null) {
@@ -82,22 +100,6 @@ list.append(1);
 list.append(2);
 list.prepend(0);
 list.append(3);
-
-console.log(list);
-console.log(list.size());
-
-list.pop();
-console.log(list);
-console.log(list.size());
-
-list.pop();
-console.log(list);
-console.log(list.size());
-
-list.pop();
-console.log(list);
-console.log(list.size());
-
-list.pop();
-console.log(list);
-console.log(list.size());
+console.log(list.contains(1)); //true
+console.log(list.contains(3)); //true
+console.log(list.contains(4)); //false
