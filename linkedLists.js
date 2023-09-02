@@ -108,6 +108,22 @@ class LinkedList {
       return null;
     }
   }
+
+  toString() {
+    let values = [];
+    let current = this.head();
+    if (!current) {
+      values.push(" null ");
+    } else {
+      while (current.nextNode !== null) {
+        values.push(`( ${current.value} )`);
+        current = current.nextNode;
+      }
+      values.push(`( ${current.value} )`);
+      values.push(" null ");
+    }
+    return values.join(" -> ");
+  }
 }
 class Node {
   constructor(value = null, newNode = null) {
@@ -117,11 +133,9 @@ class Node {
 }
 
 let list = new LinkedList();
-console.log(list.find("a")); //null
+console.log(list.toString()); // null
 list.append("b");
 list.append("c");
 list.prepend("a");
 list.append("d");
-console.log(list.find("a")); //0
-console.log(list.find("c")); //2
-console.log(list.find("e")); //null
+console.log(list.toString()); // ( a ) -> ( b ) -> ( c ) -> ( d ) -> null
