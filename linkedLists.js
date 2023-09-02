@@ -59,6 +59,16 @@ class LinkedList {
     }
     return "Out of bound";
   }
+
+  pop() {
+    let totalNodes = this.size();
+    if (totalNodes === 1) {
+      this.headNode = null;
+    } else {
+      let penUltimateNode = this.at(totalNodes - 2);
+      penUltimateNode.nextNode = null;
+    }
+  }
 }
 class Node {
   constructor(value = null, newNode = null) {
@@ -71,4 +81,23 @@ let list = new LinkedList();
 list.append(1);
 list.append(2);
 list.prepend(0);
-console.log(list.at(3));
+list.append(3);
+
+console.log(list);
+console.log(list.size());
+
+list.pop();
+console.log(list);
+console.log(list.size());
+
+list.pop();
+console.log(list);
+console.log(list.size());
+
+list.pop();
+console.log(list);
+console.log(list.size());
+
+list.pop();
+console.log(list);
+console.log(list.size());
