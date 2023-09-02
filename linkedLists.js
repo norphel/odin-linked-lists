@@ -144,6 +144,25 @@ class LinkedList {
       newNode.nextNode = nodeAtIndex;
     }
   }
+
+  removeAt(index) {
+    if (index < 0 || index >= this.size()) {
+      console.log("Index out of range");
+    } else if (this.size === 1 && index === 0) {
+      this.headNode = null;
+    } else if (this.size !== 0 && index === 0) {
+      let firstNode = this.head();
+      let secondNode = firstNode.nextNode;
+      this.headNode = secondNode;
+      firstNode.nextNode = null;
+    } else {
+      let nodeAtIndex = this.at(index);
+      let prevNode = this.at(index - 1);
+      let nextNode = nodeAtIndex.nextNode;
+      prevNode.nextNode = nextNode;
+      nodeAtIndex.nextNode = null;
+    }
+  }
 }
 class Node {
   constructor(value = null, newNode = null) {
@@ -154,13 +173,8 @@ class Node {
 
 let list = new LinkedList();
 list.append(1);
+list.append(2);
 list.append(3);
-console.log(list.toString()); //( 1 ) -> ( 3 ) ->  null
-list.insertAt(2, 1);
-console.log(list.toString()); //( 1 ) -> ( 2 ) -> ( 3 ) ->  null
-list.insertAt(0, 0);
-console.log(list.toString()); //( 0 ) -> ( 1 ) -> ( 2 ) -> ( 3 ) ->  null
-list.insertAt(4, 4);
-console.log(list.toString()); //( 0 ) -> ( 1 ) -> ( 2 ) -> ( 3 ) -> ( 4 ) ->  null
-list.insertAt(5, 6); //Index out of range
-console.log(list.toString()); // ( 0 ) -> ( 1 ) -> ( 2 ) -> ( 3 ) -> ( 4 ) ->  null
+console.log(list); //LinkedList { headNode: Node { value: 1, nextNode: Node { value: 2, nextNode: Node { value: 3, nextNode: null } } }
+list.removeAt(1);
+console.log(list); //LinkedList { headNode: Node { value: 1, nextNode: Node { value: 3, nextNode: null } } }
