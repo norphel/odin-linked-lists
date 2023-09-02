@@ -28,22 +28,27 @@ class LinkedList {
   append(value) {
     if (!this.head()) {
       this.headNode = new Node(value);
+    } else {
+      let tailNode = this.tail();
+      tailNode.nextNode = new Node(value);
     }
-    let tailNode = this.tail();
-    tailNode.nextNode = new Node(value);
   }
+
   size() {
     let count = 0;
     if (!this.head()) {
       return 0;
-    }
-    let current = this.head();
-    while (current.nextNode !== null) {
+    } else {
+      let current = this.head();
+      while (current.nextNode !== null) {
+        count++;
+        current = current.nextNode;
+      }
       count++;
-      current = current.nextNode;
+      return count;
     }
-    return count;
   }
+
   at(index) {
     let current = this.head();
     for (let i = 0; i < this.size(); i++) {
@@ -63,11 +68,7 @@ class Node {
 }
 
 let list = new LinkedList();
-console.log(list.at(0));
-list.append("a");
-list.append("b");
-list.append("c");
-list.append("d");
-list.append("e");
+list.append(1);
+list.append(2);
+list.prepend(0);
 console.log(list.at(3));
-console.log(list.at(6));
